@@ -163,7 +163,7 @@ def index():
         go.Scatter(x=df['Timestamp'], y=df['Values'], name='Voltage', line=dict(color='blue')),
         go.Scatter(x=df['Timestamp'], y=analysis_results['ma_5day'], name='5-Day MA', line=dict(color='orange'))
     ])
-    fig2.update_layout(title='Voltage with 5-Day Moving Average')
+    fig2.update_layout(title='Voltage vs. Timestamp with 5-Day Moving Average')
     
     # Convert Plotly figures to HTML
     plot1_div = fig1.to_html(full_html=False)
