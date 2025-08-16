@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voltage Data Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f4f4f4; color: #333; }
+        .container { max-width: 1200px; margin: 20px auto; padding: 10px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .table-striped tr:nth-child(even) { background-color: #f8f9fa; }
+        .table-striped th { background-color: #007bff; color: white; }
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <header class="bg-blue-600 text-white p-4 text-center">
+        <h1 class="text-2xl font-bold">Voltage Data Dashboard</h1>
+    </header>
+    <div class="container">
+        <div class="grid">
+            <div>{{ plot1_div | safe }}</div>
+            <div>{{ plot2_div | safe }}</div>
+        </div>
+        <div class="mt-4">
+            <h2 class="text-xl font-semibold">Local Peaks and Lows</h2>
+            {{ peaks_lows | safe }}
+        </h2>
+        <h2 class="text-xl font-semibold">Voltage Below 20</h2>
+        {{ voltage_below_20 | safe }}
+        </h2>
+        <h2 class="text-xl font-semibold">Acceleration in Downward Slopes</h2>
+        {{ downward_slopes | safe }}
+        </h2>
+    </div>
+</body>
+</html>
