@@ -169,9 +169,12 @@ def index():
     plot1_div = fig1.to_html(full_html=False)
     plot2_div = fig2.to_html(full_html=False)
     
+    # Handle empty voltage_below_20 with a message
+    voltage_below_20_html = analysis_results['voltage_below_20'].to_html(classes='table table-striped') if not analysis_results['voltage_below_20'].empty else '<p class="text-gray-600">No values below 20</p>'
+    
     return render_template('index.html', plot1_div=plot1_div, plot2_div=plot2_div,
                           peaks_lows=analysis_results['peaks_lows'].to_html(classes='table table-striped'),
-                          voltage_below_20=analysis_results['voltage_below_20'].to_html(classes='table table-striped'),
+                          voltage_below_20=voltage_below_20_html,
                           downward_slopes=analysis_results['downward_slopes'].to_html(classes='table table-striped'))
 
 if __name__ == '__main__':
